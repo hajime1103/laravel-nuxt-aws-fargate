@@ -1,0 +1,2 @@
+exports.ids=[2],exports.modules={49:function(t,e,r){"use strict";r.r(e);var n={asyncData:async({app:t})=>({data:await t.$axios.$get("/api")})},c=r(1),component=Object(c.a)(n,function(){var t=this.$createElement;return(this._self._c||t)("div",[this._ssrNode(this._ssrEscape(this._s(this.data)))])},[],!1,null,null,"2d02a414");e.default=component.exports}};
+//# sourceMappingURL=10fb49de86e473cff464.js.map
