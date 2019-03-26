@@ -4,11 +4,6 @@ phases:
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
-      # Install pip
-      #- apt-get update
-      #- apt-get install -y apt-transport-https
-      #- apt-get install python-pip
-      #- pip install awscli --upgrade
       - aws --version
       - $(aws ecr get-login --no-include-email --region ${AWS_DEFAULT_REGION})
       ## イメージ名を定義
@@ -25,9 +20,9 @@ phases:
       - echo Build started on `date`
       - echo Building the Docker image...
       ## docker-composeでbuildを行う
-      - docker-compose -f docker-compose.production.yml build --no-cache nginx php-fpm
-      #- docker build -t ${REPOSITORY_URI_PHP_FPM}:latest -f docker/php-fpm/Dockerfile-production .
-      #- docker build -t ${REPOSITORY_URI_NGINX}:latest docker/nginx/Dockerfile-production .
+      #- docker-compose -f docker-compose.production.yml build --no-cache nginx php-fpm
+      - docker build -t ${REPOSITORY_URI_PHP_FPM}:latest -f docker/php-fpm/Dockerfile-production .
+      - docker build -t ${REPOSITORY_URI_NGINX}:latest docker/nginx/Dockerfile-production .
       - docker tag ${REPOSITORY_URI_PHP_FPM}:latest ${REPOSITORY_URI_PHP_FPM}:$IMAGE_TAG
       - docker tag ${REPOSITORY_URI_NGINX}:latest ${REPOSITORY_URI_NGINX}:$IMAGE_TAG
   post_build:
