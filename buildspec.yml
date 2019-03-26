@@ -5,6 +5,8 @@ phases:
     commands:
       - echo Logging in to Amazon ECR...
       # Install pip
+      - apt-get update
+      - apt-get install -y apt-transport-https
       - apt-get install python-pip
       - pip install awscli --upgrade
       - aws --version
