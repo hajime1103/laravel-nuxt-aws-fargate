@@ -5,7 +5,11 @@ phases:
     commands:
       - echo Logging in to Amazon ECR...
       - aws --version
+      ## awsにログインする
       - $(aws ecr get-login --no-include-email --region ${AWS_DEFAULT_REGION})
+      ## s3からenvファイルを取得する
+      aws s3 cp s3://guild-app-environment-files/staging/env ./.env
+      echo ls -l -a 
       ## ECRイメージ名を定義
       - IMAGE_NAME_PHP_FPM=laradock_php-fpm
       - IMAGE_NAME_NGINX=laradock_nginx
