@@ -111,7 +111,7 @@ RUN curl -sS https://getcomposer.org/installer | php && \
 
 #CMD ["php-fpm"]
 
-ADD ./docker/nginx/startup.sh /opt/startup.sh
+ADD ./docker/php-fpm/startup.sh /opt/startup.sh
 RUN sed -i 's/\r//g' /opt/startup.sh
 CMD ["/bin/bash", "/opt/startup.sh"]
 
