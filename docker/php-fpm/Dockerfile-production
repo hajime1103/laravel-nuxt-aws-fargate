@@ -106,9 +106,14 @@ RUN curl -sS https://getcomposer.org/installer | php && \
 
 # テーブル定義のコマンドを実行する
 # 普段はコメントアウトをしておき、マイグレーションファイルを追加したときにコメントを外す
-RUN php artisan migrate
+#RUN php artisan migrate
 
-CMD ["php-fpm"]
+
+#CMD ["php-fpm"]
+
+ADD ./docker/nginx/startup.sh /opt/startup.sh
+RUN sed -i 's/\r//g' /opt/startup.sh
+CMD ["/bin/bash", "/opt/startup.sh"]
 
 # 宣言的な意味で実際にポートを開いてる場合ではない
 EXPOSE 9000
