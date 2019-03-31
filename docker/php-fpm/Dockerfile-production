@@ -92,16 +92,21 @@ RUN rm -r html
 COPY . .
 
 # .envファイルを作成する
-RUN cp .env.example .env
+#RUN cp .env.example .env
 
 # Laravelを動作させるための準備をする
 # composerをインストールしPHPの依存モジュールをインストールする
+# 暗号化用のKeyを作成
 # /storage/logs/に対してアクセス権を変更する
 RUN curl -sS https://getcomposer.org/installer | php && \
     mv composer.phar /usr/local/bin/composer && \
     composer install && \
     php artisan key:generate && \
     chown -R www-data:www-data /var/www
+
+# テーブル定義のコマンドを実行する
+# 普段はコメントアウトをしておき、マイグレーションファイルを追加したときにコメントを外す
+RUN php artisan migrate
 
 CMD ["php-fpm"]
 
