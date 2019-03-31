@@ -92,7 +92,7 @@ RUN rm -r html
 COPY . .
 
 # .envファイルを作成する
-#RUN cp .env.example .env
+RUN cp .env.example .env
 
 # Laravelを動作させるための準備をする
 # composerをインストールしPHPの依存モジュールをインストールする
