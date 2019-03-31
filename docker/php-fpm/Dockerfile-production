@@ -108,7 +108,6 @@ RUN curl -sS https://getcomposer.org/installer | php && \
 # 普段はコメントアウトをしておき、マイグレーションファイルを追加したときにコメントを外す
 #RUN php artisan migrate
 
-
 #CMD ["php-fpm"]
 
 ADD ./docker/php-fpm/startup.sh /opt/startup.sh
