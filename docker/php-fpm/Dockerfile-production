@@ -106,7 +106,7 @@ RUN curl -sS https://getcomposer.org/installer | php && \
 
 # テーブル定義のコマンドを実行する
 # 普段はコメントアウトをしておき、マイグレーションファイルを追加したときにコメントを外す
-RUN php artisan migrate
+#RUN php artisan migrate
 
 #CMD ["php-fpm"]
 
